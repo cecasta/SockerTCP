@@ -31,4 +31,13 @@ public class MessageServiceImpl implements MessageService {
         LOGGER.info("Receive response: {}", response);
     }
 
+	@Override
+	public String sendMessageAsesorVirtual(String message) {
+        LOGGER.info("Send message Asesor virtual: {}", message);
+        byte[] responseBytes = tcpClientGateway.send(message.getBytes());
+        String response = new String(responseBytes);
+        LOGGER.info("Receive response: {}", response);
+		return response;
+	}
+
 }

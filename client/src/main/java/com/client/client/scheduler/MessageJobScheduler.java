@@ -1,6 +1,8 @@
 package com.client.client.scheduler;
 
 
+import java.util.Scanner;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -19,7 +21,11 @@ public class MessageJobScheduler {
 
     @Scheduled(fixedDelay = 1000L)
     public void sendMessageJob() {
-        messageService.sendMessage();
+    	System.out.println("Ingresar numero de telefono: ");
+    	Scanner sc = new Scanner(System.in);
+    	String mobileNo = sc.nextLine();
+    	
+        messageService.sendMessageAsesorVirtual(mobileNo);
     }
 
 }

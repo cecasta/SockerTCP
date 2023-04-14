@@ -18,4 +18,19 @@ public class MessageServiceImpl implements MessageService {
         return responseContent.getBytes();
     }
 
+	@Override
+	public byte[] processMessageAsesorVirtual(byte[] message) {
+        String messageContent = new String(message);
+        String messageResponse;
+        LOGGER.info("Receive message Server: {}", messageContent);
+        if(messageContent.equals("300123")) {
+        	messageResponse = "Carlos,Calle 53 79 105,Medellin";
+        }else {
+        	messageResponse = "Persona dueña de ese número telefónico no existe";
+        }
+        	
+        String responseContent = String.format("Message \"%s\" is processed", messageResponse);
+        return responseContent.getBytes();
+	}
+
 }
